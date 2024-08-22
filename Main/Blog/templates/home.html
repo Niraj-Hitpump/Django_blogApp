@@ -1,0 +1,129 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Blog{% endblock title %}
+
+{% block content %}
+
+<!-- first or the main home page: -->
+<main class="container mt-4">
+    <div class="p-4 p-md-5 mb-4 rounded bg-secondary text-white" id="dynamic-bg">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6 px-0">
+                    {% if request.user.is_authenticated %}
+                        <h1 class="display-3">Welcome, {{ request.user }}</h1>
+                        <h1>Share your Experience as a blog.</h1>
+                    {% else %}
+                        <h1 class="display-4">Please Login to View Blogs</h1>
+                    {% endif %}
+                </div>
+            </div>
+            <div class="me-3 mt-2">
+                <a class="btn btn-primary me-3" href="{% url 'add_blog' %}" role="button">Add Blog</a>
+            </div>
+        </div>
+    </div>
+</main>
+
+<style>
+    #dynamic-bg {
+    background-image: url('https://picsum.photos/1920/1080'); /* Replace with desired image size */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    /* Add other styling properties if needed */
+}
+</style>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        var dynamicBg = document.getElementById('dynamic-bg');
+        var randomImageUrl = 'https://picsum.photos/1920/1080?' + new Date().getTime(); // Adds a unique query string to avoid caching
+        dynamicBg.style.backgroundImage = 'url(' + randomImageUrl + ')';
+    });
+</script>
+
+
+
+<!-- for the card -->
+<div class="header">
+    <h1></h1>
+</div>
+
+<style>
+    .card-img-top {
+        width: 100%;
+        height: 200px;
+        object-fit: cover;
+    }
+    .card {
+        transition: transform 0.3s ease;
+        display: flex;
+        flex-direction: column;
+    }
+    .card:hover {
+        transform: translateY(-10px);
+    }
+    .btn-primary {
+        background-color: #007bff;
+        border: none;
+        font-weight: bold;
+        transition: background-color 0.3s ease;
+    }
+    .btn-primary:hover {
+        background-color: #0056b3;
+    }
+    .card-body {
+        flex-grow: 1; /* Make the body fill the remaining space */
+    }
+    .card-footer {
+        margin-top: auto; /* Push the footer to the bottom of the card */
+    }
+</style>
+
+<div class="container">
+    <div class="row mb-5">
+        <!-- Blog items loop -->
+        {% for blog in blogs %}
+        <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
+            <div class="card shadow border-0 h-100 d-flex flex-column">
+                <!-- Blog image with link -->
+                <a href="{% url 'blog_detail' blog.slug %}">
+                    <img class="img-fluid card-img-top" src="{{ blog.image.url }}" alt="{{ blog.title }}">
+                </a>
+                <div class="card-body">
+                    <!-- Blog user -->
+                    <a class="text-uppercase text-muted text-sm letter-spacing">
+                        {{ blog.user.username }}
+                    </a>
+                    <!-- Blog title -->
+                    <h5 class="my-2">
+                        <a class="text-dark" href="{% url 'blog_detail' blog.slug %}">
+                            {{ blog.title }}
+                        </a>
+                    </h5>
+                    <!-- Blog date -->
+                    <p class="text-gray-500 text-sm mb-2">
+                        <i class="far fa-clock mr-2"></i>
+                        {{ blog.created_at|date:"F d, Y" }}
+                    </p>
+                    <!-- Blog content truncated -->
+                    <p class="my-2 text-muted text-sm">
+                        {{ blog.content|truncatewords:15|safe }}
+                    </p>
+                </div>
+                <!-- Blog footer (buttons) -->
+                <div class="card-footer">
+                    <a class="btn btn-primary" href="{% url 'blog_detail' blog.slug %}">
+                        Read More
+                    </a>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+
+{% endblock content %}

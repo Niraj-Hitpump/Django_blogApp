@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Blog_Add_Blog{% endblock title %}
+
+{% block content %}
+<div class="container mt-4">
+
+    <a href="{% url 'see_blog' %}" class="btn btn-warning mb-3">View Your Blog</a>
+    
+    <!-- Success message display -->
+    {% if messages %}
+        <div class="alert alert-success" role="alert">
+            {% for message in messages %}
+                {{ message }}
+            {% endfor %}
+        </div>
+    {% endif %}
+    
+    <form method="post" class="mt-4" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="row">
+            <div class="col-md-12 mb-3">
+                <label for="title">Enter Blog Title</label>
+                <input type="text" class="form-control" id="title" placeholder="Enter Title of Blog" name="title" required>
+            </div>
+            
+            <div class="col-md-12 mb-3">
+                {{ form.media }}
+                {{ form.as_p }}
+            </div>
+            
+            <div class="col-md-12 mb-3">
+                <label for="image">Upload Image</label>
+                <input type="file" class="form-control" id="image" name="image" required>
+            </div>
+                  
+        </div>
+        <button type="submit" class="btn btn-primary mt-3">Create Blog</button>
+    </form>
+</div>
+{% endblock content %}

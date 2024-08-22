@@ -1,0 +1,65 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Update Blog{% endblock title %}
+
+{% block content %}
+<div class="container">
+    <a href="{% url 'see_blog' %}" class="btn btn-warning mb-3">View Your Blog</a>
+
+    <!-- Display success messages -->
+    {% if messages %}
+        <div class="alert alert-success" role="alert">
+            {% for message in messages %}
+                {{ message }}
+            {% endfor %}
+        </div>
+    {% endif %}
+
+    <!-- Update Blog Form -->
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="row">
+            <!-- Title Field -->
+            <div class="col-md-12">
+                <label for="title">Enter Blog Title</label>
+                <input type="text" class="form-control" name="title" value="{{ blog_obj.title }}" placeholder="Enter Title of Blog">
+            </div>
+
+            <!-- Content Field with Flora Editor -->
+            <div class="col-md-12 mt-3">
+                <label for="content">Content</label>
+                <textarea class="form-control" id="flora-editor" name="content">{{ blog_obj.content }}</textarea>
+            </div>
+
+            <!-- Image Field -->
+            <div class="col-md-12 mt-3">
+                <label for="image">Upload Image</label>
+                <input type="file" class="form-control" name="image">
+                <!-- Show existing image if available -->
+                {% if blog_obj.image %}
+                    <img src="{{ blog_obj.image.url }}" class="img-thumbnail mt-3" width="200">
+                {% endif %}
+            </div>
+        </div>
+
+        <button type="submit" class="btn btn-primary mt-4">Update Blog</button>
+    </form>
+</div>
+{% endblock content %}
+
+<!-- Flora Editor Script -->
+{% block extra_js %}
+    <script src="https://cdn.jsdelivr.net/npm/flora-editor@latest/dist/js/flora.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/flora-editor@latest/dist/css/flora.min.css" rel="stylesheet">
+    
+    <script>
+        // Initialize Flora editor on the content field
+        document.addEventListener('DOMContentLoaded', function() {
+            const editor = new FloraEditor('#flora-editor', {
+                height: 300,  // Set editor height (you can customize this)
+                toolbar: ['bold', 'italic', 'underline', 'link', 'image', 'list'],  // Customize toolbar options
+            });
+        });
+    </script>
+{% endblock extra_js %}

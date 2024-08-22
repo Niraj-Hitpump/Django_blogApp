@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}See My Blogs{% endblock title %}
+
+{% block content %}
+
+{% if messages %}
+<div class="alert alert-success" role="alert">
+    {% for message in messages %}
+        <div>{{ message }}</div>
+    {% endfor %}
+</div>
+{% endif %}
+
+<div class="container mt-5">
+    <h2 class="mb-4">My Blogs</h2>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Blog Title</th>
+                <th scope="col">Created At</th>
+                <th scope="col">Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% if blog_objects %}
+                {% for blog in blog_objects %}
+                <tr>
+                    <th scope="row">{{ forloop.counter }}</th>
+                    <td>{{ blog.title }}</td>
+                    <td>{{ blog.created_at|date:"F d, Y" }}</td>
+                    <td>
+                        <!-- Make sure these URLs correspond to actual views -->
+                        <a href="{% url 'update_blog' blog.slug %}" class="btn btn-success btn-sm">Update</a>
+                        <a href="{% url 'delete_blog' blog.id %}" class="btn btn-danger btn-sm">Delete</a>
+                    </td>
+                </tr>
+                {% endfor %}
+            {% else %}
+                <tr>
+                    <td colspan="4">No blogs found.</td>
+                </tr>
+            {% endif %}
+        </tbody>
+    </table>
+</div>
+{% endblock content %}
