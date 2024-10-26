@@ -1,7 +1,76 @@
-{% extends 'base.html'%}
+{% extends 'base.html' %}
 {% load static %}
 
-{% block title%}Blog_Feature{% endblock title%}
+{% block title %}Blog_Feature{% endblock title %}
+
 {% block content %}
-<h1>Features</h1>
-{% endblock content%}
+<section class="py-5 bg-light">
+    <div class="container">
+        <div class="text-center mb-5">
+            <h2 class="fw-bold">Features of Our Blog App</h2>
+            <p class="text-muted">Discover the amazing features that make our blog app the best place to share your thoughts.</p>
+        </div>
+        <div class="row row-cols-1 row-cols-md-3 g-4">
+            <div class="col">
+                <div class="card h-100 text-center border-0 shadow-sm feature-card">
+                    <div class="card-body">
+                        <div class="mb-3">
+                            <i class="feature-icon bi bi-pencil-square"></i>
+                        </div>
+                        <h5 class="card-title">Easy to Write</h5>
+                        <p class="card-text">Create and edit blog posts with our simple, user-friendly editor. Perfect for all writers.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card h-100 text-center border-0 shadow-sm feature-card">
+                    <div class="card-body">
+                        <div class="mb-3">
+                            <i class="feature-icon bi bi-card-image"></i>
+                        </div>
+                        <h5 class="card-title">Add Images</h5>
+                        <p class="card-text">Easily upload images to your blog posts and enhance the visual appeal of your content.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card h-100 text-center border-0 shadow-sm feature-card">
+                    <div class="card-body">
+                        <div class="mb-3">
+                            <i class="feature-icon bi bi-share"></i>
+                        </div>
+                        <h5 class="card-title">Share with Friends</h5>
+                        <p class="card-text">Share your posts on social media platforms and get more readers for your content.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Custom styling -->
+<style>
+    .bg-light {
+        background-color: #f8f9fa !important;
+    }
+    .feature-icon {
+        font-size: 3rem;
+        color: #007bff;
+    }
+    .feature-card {
+        background: #fff;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        border-radius: 8px;
+    }
+    .feature-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+    }
+    .card-title {
+        color: #343a40;
+    }
+    .card-text {
+        color: #6c757d;
+    }
+</style>
+{% endblock content %}

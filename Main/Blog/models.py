@@ -2,6 +2,7 @@ from django.db import models
 from django.contrib.auth.models import User
 from froala_editor.fields import FroalaField
 from .helpers import generate_slug
+from taggit.managers import TaggableManager
 
 # Create your models here.
 class BlogModel(models.Model):
@@ -12,6 +13,9 @@ class BlogModel(models.Model):
     image=models.ImageField(upload_to='blog')
     created_at=models.DateTimeField(auto_now_add=True)
     updated_at=models.DateTimeField(auto_now=True)
+    is_approved = models.BooleanField(default=False)
+    
+    tags = TaggableManager() 
 
 
     def __str__(self):

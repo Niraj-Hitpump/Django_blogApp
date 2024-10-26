@@ -1,7 +1,42 @@
-{% extends 'base.html'%}
-{% load static %}
+{% extends 'base.html' %}
 
-{% block title%}Blog_About{% endblock title%}
+{% block title %}About Us{% endblock title %}
+
 {% block content %}
-<h1>About</h1>
-{% endblock content%}
+<div class="container mt-5">
+    <h1 class="text-center">About Us</h1>
+    <p class="text-center">Click the button below to learn more about our mission.</p>
+    
+    <!-- Button trigger modal -->
+    <div class="text-center">
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#aboutModal">
+            Learn More
+        </button>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="aboutModal" tabindex="-1" aria-labelledby="aboutModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="aboutModalLabel">Our Mission</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p>At our organization, we strive to deliver the best services to our clients. Our mission is to:</p>
+                    <ul>
+                        <li>Provide high-quality products.</li>
+                        <li>Innovate continuously.</li>
+                        <li>Ensure customer satisfaction.</li>
+                    </ul>
+                    <p>Join us in our journey to make a difference!</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Take Action</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}
