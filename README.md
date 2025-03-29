@@ -4,20 +4,23 @@ This is a blogApp made in the Django where the user can upload the blog and can 
 ![Login](https://github.com/Niraj-Hitpump/Django_blogApp/blob/main/Main/images/login.png).
 
 #Home
-![Home](https://github.com/Niraj-Hitpump/Django_blogApp/blob/main/Main/images/login.png).
+![Home](https://github.com/Niraj-Hitpump/Django_blogApp/blob/main/Main/images/homepage.png).
 
 #AddBlog
-![Addblog](https://github.com/Niraj-Hitpump/Django_blogApp/blob/main/Main/images/login.png).
+![Addblog](https://github.com/Niraj-Hitpump/Django_blogApp/blob/main/Main/images/addblog.png).
 
 #Description_viewBlog
-![Description](https://github.com/Niraj-Hitpump/Django_blogApp/blob/main/Main/images/login.png).
+![Description](https://github.com/Niraj-Hitpump/Django_blogApp/blob/main/Main/images/detail.png).
 
-#Login
-![Login](https://github.com/Niraj-Hitpump/Django_blogApp/blob/main/Main/images/login.png).
-#Login
-![Login](https://github.com/Niraj-Hitpump/Django_blogApp/blob/main/Main/images/login.png).
-#Login
-![Login](https://github.com/Niraj-Hitpump/Django_blogApp/blob/main/Main/images/login.png).
+#User Blogs
+![list](https://github.com/Niraj-Hitpump/Django_blogApp/blob/main/Main/images/list.png).
+
+#Contact
+![Login](https://github.com/Niraj-Hitpump/Django_blogApp/blob/main/Main/images/contact.png).
+
+
+Admin
+![Login](https://github.com/Niraj-Hitpump/Django_blogApp/blob/main/Main/images/admin.png).
 
 
 
