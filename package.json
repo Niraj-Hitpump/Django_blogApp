@@ -1,0 +1,13 @@
+{
+  "name": "django_blogapp",
+  "version": "1.0.0",
+  "description": "This is blogapp made in the django ...",
+  "main": "index.js",
+ "scripts": {
+  "test": "echo \"Error: no test specified\" && exit 1",
+  "build": "python main/manage.py collectstatic"
+},
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
