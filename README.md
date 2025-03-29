@@ -19,7 +19,7 @@ This is a blogApp made in the Django where the user can upload the blog and can 
 ![Login](https://github.com/Niraj-Hitpump/Django_blogApp/blob/main/Main/images/contact.png).
 
 
-Admin
+Admin_section
 ![Login](https://github.com/Niraj-Hitpump/Django_blogApp/blob/main/Main/images/admin.png).
 
 
